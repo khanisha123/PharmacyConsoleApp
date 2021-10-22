@@ -85,5 +85,24 @@ namespace PharmacyApp.Controller
            
             
         }
+        public void GetPharmacyWithSize() 
+        {
+            Helper.ChangeTextColor(ConsoleColor.DarkYellow, "Ener pharmacy ware house size:");
+            string input = Console.ReadLine();
+            int MaxSize;
+            bool isTrue = int.TryParse(input, out MaxSize);
+            if (isTrue)
+            {
+                Helper.ChangeTextColor(ConsoleColor.Blue, $"Phaemacy which size is {MaxSize}:");
+
+                foreach (var item in pharmacyServic.GetAll(MaxSize))
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan,item.Name );
+
+                }
+                return;
+            }
+            Helper.ChangeTextColor(ConsoleColor.Red, $"Please select correct format");
+        }
     }
 }

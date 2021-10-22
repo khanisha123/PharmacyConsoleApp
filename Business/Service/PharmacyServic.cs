@@ -65,12 +65,15 @@ namespace Business.Service
 
         public List<Pharmacy> GetAll()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); 
         }
 
-        public List<Pharmacy> GetAll(int PharmacyWareHouse)
+        public List<Pharmacy> GetAll(int MaxPharmacyWareHouseSize)
         {
-            throw new NotImplementedException();
+            return pharmacyrepository.GetAll(g => g.MaxPharmacyWareHouseSize == MaxPharmacyWareHouseSize);
         }
+      
+        
+
     }
 }

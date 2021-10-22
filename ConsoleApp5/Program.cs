@@ -18,7 +18,7 @@ namespace ConsoleApp5
                 string selectedMenu = Console.ReadLine();
                 int menu;
                 bool isTrue = int.TryParse(selectedMenu,out menu);
-                if (isTrue && menu>0 && menu<8)
+                if (isTrue && menu>=0 && menu<=7)
                 {
                     switch (menu)
                     {
@@ -38,6 +38,8 @@ namespace ConsoleApp5
     
                             break;
                         case(int) Helper.Menu.GetPharmacyWareHouseWithSize:
+                            pharmacyController.GetPharmacyWithSize();
+
                             break;
 
                     }
