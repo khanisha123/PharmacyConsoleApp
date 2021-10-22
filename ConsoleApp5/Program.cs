@@ -10,7 +10,7 @@ namespace ConsoleApp5
     {
         static void Main(string[] args)
         {
-            MedicineController medicineController = new MedicineController();
+            PharmacyController pharmacyController = new PharmacyController();
             Helper.ChangeTextColor(ConsoleColor.Green, "Welcome");
             while (true)
             {
@@ -22,21 +22,22 @@ namespace ConsoleApp5
                 {
                     switch (menu)
                     {
-                        case(int) Helper.Menu.CreatANewMedicineType:
-                            medicineController.Creat();
+                        case(int) Helper.Menu.CreatPharmacy:
+                            pharmacyController.Creat();
                                break;
-                        case (int) Helper.Menu.UpdateMedicine:
+                        case (int) Helper.Menu.UpdatePharmacy:
                             break;
-                        case(int) Helper.Menu.DeleteMedicine:
+                        case(int) Helper.Menu.DeletePharmacy:
+                            pharmacyController.Delete();
                             break;
-                        case (int) Helper.Menu.GetMedicineWithId:
+                        case (int) Helper.Menu.GetPharmacyWithId:
                             break;
-                        case(int) Helper.Menu.GetMedicineWithType:
+                        case(int) Helper.Menu.GetPharmacyWithName:
                             break;
-                        case 6:
-                            medicineController.GetAllGroup();
+                        case (int)Helper.Menu.GetAllPharmacy:
+    
                             break;
-                        case(int) Helper.Menu.GetMedicineWithSize:
+                        case(int) Helper.Menu.GetPharmacyWareHouseWithSize:
                             break;
 
                     }
@@ -56,9 +57,11 @@ namespace ConsoleApp5
         static void ShowMenu() 
         {
             Helper.ChangeTextColor(ConsoleColor.Blue,
-                    "1-Creat a New Medicine Type,2-Update Medicine,3-Delete Medicine,4-Get MEdicine with Id" +
-                    "5-Get MEdicine with type,6-All Medicine,7-Get Medicine with Size,0-Exit");
+                    "1-Creat a New Pharmacy with Name,2-Update Pharmacy,3-Delete Pharmacy,4-Get Pharmacy with Id" +
+                    "5-Get Pharmacy with Name,6-All Pharmacy,7-Get Pharmacy Ware House With Size,0-Exit");
             Helper.ChangeTextColor(ConsoleColor.Yellow, "Select Option");
         }
     }
+
+
 }

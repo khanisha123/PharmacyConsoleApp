@@ -1,33 +1,29 @@
 ﻿using Business.Interface;
+using DataAccess.Repository;
 using Entity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-using DataAccess.Repository;
-
 namespace Business.Service
 {
-    public class PharmacyServicies : IPharmacy
+    public class PharmacyServic : IPharmacy
     {
         private static int count { get; set; }
-        public PharmacyRepository pharmacyRepository { get; set; }
-
-        public PharmacyServicies()
+        public PharmacyRepository pharmacyrepository { get; set; }
+        public PharmacyServic()
         {
-
-            pharmacyRepository = new PharmacyRepository();
-
+            pharmacyrepository = new PharmacyRepository();
         }
         public Pharmacy Creat(Pharmacy pharmacy)
         {
             try
             {
                 pharmacy.Id = count;
-                Pharmacy isExit = pharmacyRepository.Get(g => g.Name.ToLower() == pharmacy.Name.ToLower());
+                Pharmacy isExit = pharmacyrepository.Get(g => g.Name.ToLower() == pharmacy.Name.ToLower());
                 if (isExit != null)
                     return null;
-                pharmacyRepository.Creat(pharmacy);
+                pharmacyrepository.Creat(pharmacy);
                 count++;
                 return pharmacy;
             }
@@ -38,9 +34,23 @@ namespace Business.Service
             }
         }
 
-        public Pharmacy Delete(int Id)
+        public Pharmacy Update(int Id, Pharmacy pharmacy)
         {
             throw new NotImplementedException();
+        }
+
+        public Pharmacy Delete(int Id)
+        {
+            Pharmacy dbPharmacy = pharmacyrepository.Get(g=>g.Id==Id);
+            if (dbPharmacy!=null)
+            {
+                pharmacyrepository.Delete(dbPharmacy);
+                return dbPharmacy;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Pharmacy Get(int Id)
@@ -48,7 +58,7 @@ namespace Business.Service
             throw new NotImplementedException();
         }
 
-        public Pharmacy Get(string type)
+        public Pharmacy Get(string Name)
         {
             throw new NotImplementedException();
         }
@@ -58,17 +68,7 @@ namespace Business.Service
             throw new NotImplementedException();
         }
 
-        public List<Pharmacy> GetAll(long MaximumSizeDrugHolding)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Pharmacy> GetAll(int NumberOfWorkers)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Pharmacy Update(int Id, Pharmacy pharmacy)
+        public List<Pharmacy> GetAll(int PharmacyWareHouse)
         {
             throw new NotImplementedException();
         }

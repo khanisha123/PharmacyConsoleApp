@@ -13,16 +13,17 @@ namespace Untilies.Helper
             Console.ResetColor();
         }
         
+        
         public enum Menu 
         {
-            Exit,
-            CreatANewMedicineType,
-            UpdateMedicine,
-            DeleteMedicine,
-            GetMedicineWithId,
-            GetMedicineWithType,
-            GetAllMedicine,
-            GetMedicineWithSize,
+            Exit=0,
+            CreatPharmacy,
+            UpdatePharmacy,
+            DeletePharmacy,
+            GetPharmacyWithId,
+            GetPharmacyWithName,
+            GetAllPharmacy,
+            GetPharmacyWareHouseWithSize,
         }
     }
 }

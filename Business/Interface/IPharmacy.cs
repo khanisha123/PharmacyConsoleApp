@@ -13,7 +13,7 @@ namespace Business.Interface
         Pharmacy Get(int Id);
         Pharmacy Get(string type);
         List<Pharmacy> GetAll();
-        List<Pharmacy> GetAll(long MaximumSizeDrugHolding);
-        List<Pharmacy> GetAll(int NumberOfWorkers);
+        List<Pharmacy> GetAll(int EndDateForUsing);
+        
     }
 }

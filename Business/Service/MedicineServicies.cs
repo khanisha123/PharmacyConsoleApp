@@ -1,29 +1,33 @@
 ﻿using Business.Interface;
-using DataAccess.Repository;
 using Entity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
+using DataAccess.Repository;
+
 namespace Business.Service
 {
-    public class MedicineServic : IMedicine
+    public class MedicineServicies : IMedicine
     {
         private static int count { get; set; }
-        public MedicineRepository medicinerepository { get; set; }
-        public MedicineServic()
+        public MedicineRepository medicineRepository { get; set; }
+
+        public MedicineServicies()
         {
-            medicinerepository = new MedicineRepository();
+
+            medicineRepository = new MedicineRepository();
+
         }
         public Medicine Creat(Medicine medicine)
         {
             try
             {
                 medicine.Id = count;
-                Medicine isExit = medicinerepository.Get(g => g.type.ToLower() == medicine.type.ToLower());
+                Medicine isExit = medicineRepository.Get(g => g.Type.ToLower() == medicine.Type.ToLower());
                 if (isExit != null)
                     return null;
-                medicinerepository.Creat(medicine);
+                medicineRepository.Creat(medicine);
                 count++;
                 return medicine;
             }
@@ -32,6 +36,11 @@ namespace Business.Service
 
                 return null;
             }
+        }
+
+        public Medicine Update(int Id, Medicine medicine)
+        {
+            throw new NotImplementedException();
         }
 
         public Medicine Delete(int Id)
@@ -51,15 +60,15 @@ namespace Business.Service
 
         public List<Medicine> GetAll()
         {
-            return medicinerepository.GetAll();
+            throw new NotImplementedException();
         }
 
-        public List<Medicine> GetAll(int EndDateForUsing)
+        public List<Medicine> GetAll(long MaximumSizeDrugHolding)
         {
             throw new NotImplementedException();
         }
 
-        public Medicine Update(int Id, Medicine medicine)
+        public List<Medicine> GetAll(int NumberOfWorkers)
         {
             throw new NotImplementedException();
         }
