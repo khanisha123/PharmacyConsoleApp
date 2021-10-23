@@ -10,37 +10,29 @@ namespace Business.Service
 {
     public class MedicineServicies : IMedicine
     {
-        private static int count { get; set; }
-        public MedicineRepository medicineRepository { get; set; }
-
+        public MedicineRepository medicineRepository { get;}
+        public PharmacyServic pharmacyService { get;}
+        public static int count;
         public MedicineServicies()
         {
-
             medicineRepository = new MedicineRepository();
-
+            pharmacyService = new PharmacyServic();
         }
-        public Medicine Creat(Medicine medicine)
+        public Medicine Creat(Medicine medicine, string pharmacyName)
         {
-            try
+            Pharmacy dbPharmacy = pharmacyService.Get(pharmacyName);
+            if (dbPharmacy !=null)
             {
+                medicine.Pharmacy = dbPharmacy;
                 medicine.Id = count;
-                Medicine isExit = medicineRepository.Get(g => g.Type.ToLower() == medicine.Type.ToLower());
-                if (isExit != null)
-                    return null;
                 medicineRepository.Creat(medicine);
                 count++;
                 return medicine;
             }
-            catch (Exception)
+            else
             {
-
                 return null;
             }
-        }
-
-        public Medicine Update(int Id, Medicine medicine)
-        {
-            throw new NotImplementedException();
         }
 
         public Medicine Delete(int Id)
@@ -53,22 +45,22 @@ namespace Business.Service
             throw new NotImplementedException();
         }
 
-        public Medicine Get(string type)
+        public List<Medicine> Get(string name)
         {
             throw new NotImplementedException();
         }
 
-        public List<Medicine> GetAll()
+        public List<Medicine> Getall(string pharmacyName)
         {
             throw new NotImplementedException();
         }
 
-        public List<Medicine> GetAll(long MaximumSizeDrugHolding)
+        public List<Medicine> Getall()
         {
             throw new NotImplementedException();
         }
 
-        public List<Medicine> GetAll(int NumberOfWorkers)
+        public Medicine Updte(int Id, string pharmacyName)
         {
             throw new NotImplementedException();
         }

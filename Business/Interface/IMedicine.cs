@@ -7,13 +7,13 @@ namespace Business.Interface
 {
     public interface IMedicine
     {
-        Medicine Creat(Medicine medicine);
-        Medicine Update(int Id, Medicine medicine);
+        Medicine Creat(Medicine entity, string pharmacyName);
         Medicine Delete(int Id);
+        Medicine Updte(int Id,string pharmacyName);
         Medicine Get(int Id);
-        Medicine Get(string type);
-        List<Medicine> GetAll();
-        List<Medicine> GetAll(long MaximumSizeDrugHolding);
-        List<Medicine> GetAll(int NumberOfWorkers);
+        List<Medicine>Get(string name);
+        List<Medicine>Getall(string pharmacyName);
+        List<Medicine>Getall();
+        
     }
 }

@@ -9,5 +9,6 @@ namespace Entity.Models
         public int MaximumSizeDrugHolding  { get; set; }
         public int NumberOfWorkers { get; set; }
         public string Type { get; set; }
+        public Pharmacy Pharmacy { get; set; }
     }
 }

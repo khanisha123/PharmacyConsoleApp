@@ -26,10 +26,9 @@ namespace PharmacyApp.Controller
             if (isTruePharmacyWareHouse)
             {
                 Pharmacy pharmacy = new Pharmacy { Name = name, PharmacyWareHouse = MaxPharmacyWareHouse };
-                pharmacyServic.Creat(pharmacy);
                 if (pharmacyServic.Creat(pharmacy) != null)
                 {
-                    Helper.ChangeTextColor(ConsoleColor.Green, $"{pharmacy.PharmacyWareHouse} Created");
+                    Helper.ChangeTextColor(ConsoleColor.Green, $"{pharmacy.Name} Created");
                     return;
                 }
                 else

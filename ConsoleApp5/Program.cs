@@ -11,6 +11,7 @@ namespace ConsoleApp5
         static void Main(string[] args)
         {
             PharmacyController pharmacyController = new PharmacyController();
+            MedicineController medicineController = new MedicineController();
             Helper.ChangeTextColor(ConsoleColor.Green, "Welcome");
             while (true)
             {
@@ -18,7 +19,7 @@ namespace ConsoleApp5
                 string selectedMenu = Console.ReadLine();
                 int menu;
                 bool isTrue = int.TryParse(selectedMenu,out menu);
-                if (isTrue && menu>=0 && menu<=7)
+                if (isTrue && menu>=0 && menu<=8)
                 {
                     switch (menu)
                     {
@@ -35,11 +36,13 @@ namespace ConsoleApp5
                         case(int) Helper.Menu.GetPharmacyWithName:
                             break;
                         case (int)Helper.Menu.GetAllPharmacy:
-    
                             break;
                         case(int) Helper.Menu.GetPharmacyWareHouseWithSize:
                             pharmacyController.GetPharmacyWithSize();
-
+                            break;
+                        case (int)Helper.Menu.CreatMedicine:
+                            pharmacyController.GetAll();
+                            medicineController.Creat();
                             break;
 
                     }
@@ -60,7 +63,7 @@ namespace ConsoleApp5
         {
             Helper.ChangeTextColor(ConsoleColor.Blue,
                     "1-Creat a New Pharmacy with Name,2-Update Pharmacy,3-Delete Pharmacy,4-Get Pharmacy with Id" +
-                    "5-Get Pharmacy with Name,6-All Pharmacy,7-Get Pharmacy Ware House With Size,0-Exit");
+                    "5-Get Pharmacy with Name,6-All Pharmacy,7-Get Pharmacy Ware House With Size, 8-Creat Medicine,0-Exit");
             Helper.ChangeTextColor(ConsoleColor.Yellow, "Select Option");
         }
     }

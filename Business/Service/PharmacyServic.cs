@@ -26,6 +26,7 @@ namespace Business.Service
                 pharmacyrepository.Creat(pharmacy);
                 count++;
                 return pharmacy;
+                
             }
             catch (Exception)
             {
@@ -60,7 +61,7 @@ namespace Business.Service
 
         public Pharmacy Get(string Name)
         {
-            throw new NotImplementedException();
+            return pharmacyrepository.Get(g=>g.Name.ToLower()==Name.ToLower());
         }
 
         public List<Pharmacy> GetAll()
