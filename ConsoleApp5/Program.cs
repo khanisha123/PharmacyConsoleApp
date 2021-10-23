@@ -19,7 +19,7 @@ namespace ConsoleApp5
                 string selectedMenu = Console.ReadLine();
                 int menu;
                 bool isTrue = int.TryParse(selectedMenu,out menu);
-                if (isTrue && menu>=0 && menu<=8)
+                if (isTrue && menu>=1 && menu<=9)
                 {
                     switch (menu)
                     {
@@ -36,6 +36,7 @@ namespace ConsoleApp5
                         case(int) Helper.Menu.GetPharmacyWithName:
                             break;
                         case (int)Helper.Menu.GetAllPharmacy:
+                            pharmacyController.GetAll();
                             break;
                         case(int) Helper.Menu.GetPharmacyWareHouseWithSize:
                             pharmacyController.GetPharmacyWithSize();
@@ -43,6 +44,10 @@ namespace ConsoleApp5
                         case (int)Helper.Menu.CreatMedicine:
                             pharmacyController.GetAll();
                             medicineController.Creat();
+                            break;
+                        case (int)Helper.Menu.GetAllMedicineWithPharmacy:
+                            pharmacyController.GetAll();
+                            medicineController.GetAllMedicineWithPharmacy();
                             break;
 
                     }

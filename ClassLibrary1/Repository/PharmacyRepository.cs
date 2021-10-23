@@ -13,7 +13,7 @@ namespace DataAccess.Repository
         {
             try
             {
-                DBContent.Pharmacies.Add(entity);
+                DBContext.Pharmacies.Add(entity);
                 return true;
             }   
             catch (Exception)
@@ -27,7 +27,7 @@ namespace DataAccess.Repository
         {
             try
             {
-                DBContent.Pharmacies.Remove(entity);
+                DBContext.Pharmacies.Remove(entity);
                 return true;
             }
             catch (Exception)
@@ -42,8 +42,8 @@ namespace DataAccess.Repository
             try
             {
 
-                return filter == null ? DBContent.Pharmacies[0]
-                    : DBContent.Pharmacies.Find(filter);
+                return filter == null ? DBContext.Pharmacies[0]
+                    : DBContext.Pharmacies.Find(filter);
 
                 //if (filters==null)
                 //{
@@ -65,8 +65,8 @@ namespace DataAccess.Repository
         {
             try
             {
-                return filter == null ? DBContent.Pharmacies
-                    : DBContent.Pharmacies.FindAll(filter);
+                return filter == null ? DBContext.Pharmacies
+                    : DBContext.Pharmacies.FindAll(filter);
             }
             catch (Exception)
             {
@@ -79,8 +79,8 @@ namespace DataAccess.Repository
         {
             try
             {
-                Pharmacy dbPharmacies = Get(s=>s.Id == entity.Id);
-                dbPharmacies = entity;
+                Pharmacy dbPharmacie = Get(m=>m.Id == entity.Id);
+                dbPharmacie = entity;
                 return true;
 
             }

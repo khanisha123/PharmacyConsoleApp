@@ -66,7 +66,7 @@ namespace Business.Service
 
         public List<Pharmacy> GetAll()
         {
-            throw new NotImplementedException(); 
+            return pharmacyrepository.GetAll(); 
         }
 
         public List<Pharmacy> GetAll(int MaxPharmacyWareHouseSize)

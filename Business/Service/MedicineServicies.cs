@@ -12,7 +12,7 @@ namespace Business.Service
     {
         public MedicineRepository medicineRepository { get;}
         public PharmacyServic pharmacyService { get;}
-        public static int count;
+        private static int count;
         public MedicineServicies()
         {
             medicineRepository = new MedicineRepository();
@@ -45,14 +45,23 @@ namespace Business.Service
             throw new NotImplementedException();
         }
 
-        public List<Medicine> Get(string name)
+        public List<Medicine> Get(string type)
         {
             throw new NotImplementedException();
         }
 
         public List<Medicine> Getall(string pharmacyName)
         {
-            throw new NotImplementedException();
+            Pharmacy dbpharmacy = pharmacyService.Get(pharmacyName);
+            if (dbpharmacy != null)
+            {
+                return medicineRepository.GetAll(m => m.Pharmacy.Name== dbpharmacy.Name);
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
         public List<Medicine> Getall()
@@ -61,6 +70,11 @@ namespace Business.Service
         }
 
         public Medicine Updte(int Id, string pharmacyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Medicine Updte(Medicine medicine, string pharmacyName)
         {
             throw new NotImplementedException();
         }

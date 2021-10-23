@@ -13,7 +13,7 @@ namespace DataAccess.Repository
         {
             try
             {
-                DBContent.Medicines.Add(entity);
+                DBContext.Medicines.Add(entity);
                 return true;
             }
             catch (Exception)

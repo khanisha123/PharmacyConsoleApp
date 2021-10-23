@@ -16,7 +16,7 @@ namespace Untilies.Helper
         
         public enum Menu 
         {
-            Exit=0,
+            Exit,
             CreatPharmacy,
             UpdatePharmacy,
             DeletePharmacy,
@@ -24,7 +24,9 @@ namespace Untilies.Helper
             GetPharmacyWithName,
             GetAllPharmacy,
             GetPharmacyWareHouseWithSize,
-            CreatMedicine;
+            CreatMedicine,
+            GetAllMedicineWithPharmacy,
+
         }
     }
 }

@@ -17,15 +17,15 @@ namespace PharmacyApp.Controller
         }
         public void Creat() 
         {
-            Helper.ChangeTextColor(ConsoleColor.Cyan, "Enter Medicine Type:");
+            Helper.ChangeTextColor(ConsoleColor.Cyan, "Enter Pharmacy Name:");
             string name = Console.ReadLine();
-           EnterName: Helper.ChangeTextColor(ConsoleColor.Cyan, "Enter End Date For Using Medicine");
-            string PharmacyWareHouse = Console.ReadLine();
-            int MaxPharmacyWareHouse;
-            bool isTruePharmacyWareHouse = int.TryParse(PharmacyWareHouse, out MaxPharmacyWareHouse);
-            if (isTruePharmacyWareHouse)
+           EnterName: Helper.ChangeTextColor(ConsoleColor.Cyan, "Enter Pharmacy Ware House Max Size");
+            string size = Console.ReadLine();
+            int maxSize;
+            bool isTrueSize = int.TryParse(size, out maxSize);
+            if (isTrueSize)
             {
-                Pharmacy pharmacy = new Pharmacy { Name = name, PharmacyWareHouse = MaxPharmacyWareHouse };
+                Pharmacy pharmacy = new Pharmacy { Name = name, MaxPharmacyWareHouseSize = maxSize };
                 if (pharmacyServic.Creat(pharmacy) != null)
                 {
                     Helper.ChangeTextColor(ConsoleColor.Green, $"{pharmacy.Name} Created");
@@ -40,7 +40,7 @@ namespace PharmacyApp.Controller
             }
             else
             {
-                Helper.ChangeTextColor(ConsoleColor.Red, "Enter correct End Date For Using");
+                Helper.ChangeTextColor(ConsoleColor.Red, "Enter correct Size");
                 goto EnterName;
             }
         }
@@ -48,7 +48,7 @@ namespace PharmacyApp.Controller
         public void GetAll() 
         {
             Helper.ChangeTextColor(ConsoleColor.Red, $"All Pharmacy");
-            foreach (var pharmacy in pharmacyServic.GetAll())
+            foreach (Pharmacy pharmacy in pharmacyServic.GetAll())
             {
                 Helper.ChangeTextColor(ConsoleColor.Cyan, $"{pharmacy.Id} - {pharmacy.Name}");
 
@@ -78,7 +78,7 @@ namespace PharmacyApp.Controller
             }
             else
             {
-                Helper.ChangeTextColor(ConsoleColor.Red, $"Please select corret format");
+                Helper.ChangeTextColor(ConsoleColor.Red, $"Please select correct format");
             }
 
            

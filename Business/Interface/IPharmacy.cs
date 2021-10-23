@@ -11,9 +11,9 @@ namespace Business.Interface
         Pharmacy Update(int Id, Pharmacy pharmacy);
         Pharmacy Delete(int Id);
         Pharmacy Get(int Id);
-        Pharmacy Get(string type);
+        Pharmacy Get(string name);
         List<Pharmacy> GetAll();
-        List<Pharmacy> GetAll(int EndDateForUsing);
+        List<Pharmacy> GetAll(int MaxWareHouseSize);
         
     }
 }

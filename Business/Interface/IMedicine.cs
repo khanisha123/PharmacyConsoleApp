@@ -7,11 +7,11 @@ namespace Business.Interface
 {
     public interface IMedicine
     {
-        Medicine Creat(Medicine entity, string pharmacyName);
+        Medicine Creat(Medicine medicine, string pharmacyName);
         Medicine Delete(int Id);
-        Medicine Updte(int Id,string pharmacyName);
+        Medicine Updte(Medicine medicine,string pharmacyName);
         Medicine Get(int Id);
-        List<Medicine>Get(string name);
+        List<Medicine>Get(string type);
         List<Medicine>Getall(string pharmacyName);
         List<Medicine>Getall();
         
