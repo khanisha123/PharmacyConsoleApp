@@ -36,18 +36,18 @@ namespace PharmacyApp.Controller
         {
             Helper.ChangeTextColor(ConsoleColor.White, "Select Convenient Pharmacy ");
             string pharmacyName = Console.ReadLine();
-            List<Medicine> medicines = medicineServicies.Getall(pharmacyName);
+            List<Medicine> medicines = medicineServicies.GetAll(pharmacyName);
             if (medicines != null)
             {
                 Helper.ChangeTextColor(ConsoleColor.Blue, $"Pharmacy {pharmacyName}:");
                 foreach (var item in medicines)
                 {
                     Helper.ChangeTextColor(ConsoleColor.Green,
-                        $" {item.Type}- {item.Id} ");
+                        $" {item.Type} {item.Id}");
                 }
-                
                 return;
             }
+
             Helper.ChangeTextColor(ConsoleColor.Red, $"Couldn't find such as Pharmacy {pharmacyName} ");
 
         }

@@ -14,6 +14,7 @@ namespace Business.Interface
         Pharmacy Get(string name);
         List<Pharmacy> GetAll();
         List<Pharmacy> GetAll(int MaxWareHouseSize);
+        List<Pharmacy> GetAllWithPharmacyType(string GetPharmacyWithtype);
         
     }
 }

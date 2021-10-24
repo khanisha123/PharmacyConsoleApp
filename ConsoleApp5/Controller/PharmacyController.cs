@@ -21,11 +21,16 @@ namespace PharmacyApp.Controller
             string name = Console.ReadLine();
            EnterName: Helper.ChangeTextColor(ConsoleColor.Cyan, "Enter Pharmacy Ware House Max Size");
             string size = Console.ReadLine();
+           EnterType: Helper.ChangeTextColor(ConsoleColor.Cyan, "Enter Pharmacy Type:");
+            string type = Console.ReadLine();
+
+          
+
             int maxSize;
-            bool isTrueSize = int.TryParse(size, out maxSize);
+            bool isTrueSize = int.TryParse(size,out maxSize);
             if (isTrueSize)
             {
-                Pharmacy pharmacy = new Pharmacy { Name = name, MaxPharmacyWareHouseSize = maxSize };
+                Pharmacy pharmacy = new Pharmacy { Name = name, MaxPharmacyWareHouseSize = maxSize,Type=type };
                 if (pharmacyServic.Creat(pharmacy) != null)
                 {
                     Helper.ChangeTextColor(ConsoleColor.Green, $"{pharmacy.Name} Created");
@@ -43,6 +48,11 @@ namespace PharmacyApp.Controller
                 Helper.ChangeTextColor(ConsoleColor.Red, "Enter correct Size");
                 goto EnterName;
             }
+
+           
+            
+
+
         }
 
         public void GetAll() 
@@ -102,6 +112,26 @@ namespace PharmacyApp.Controller
                 return;
             }
             Helper.ChangeTextColor(ConsoleColor.Red, $"Please select correct format");
+        }
+        public void GetPharmacyWithtype() 
+        {
+            Helper.ChangeTextColor(ConsoleColor.DarkYellow, "Ener pharmacy Type:");
+            string input = Console.ReadLine();
+            
+            //string maxType;
+           
+           
+            
+                Helper.ChangeTextColor(ConsoleColor.Blue, $"Pharmacy which type is {input}");
+                foreach (var item in pharmacyServic.GetAllWithPharmacyType(input))
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan, item.Name);
+                }
+                return;
+
+            
+           
+
         }
     }
 }

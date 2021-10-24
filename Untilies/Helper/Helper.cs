@@ -26,6 +26,8 @@ namespace Untilies.Helper
             GetPharmacyWareHouseWithSize,
             CreatMedicine,
             GetAllMedicineWithPharmacy,
+            GetAllPharmacyWithType,
+            
 
         }
     }

@@ -9,10 +9,10 @@ namespace Business.Interface
     {
         Medicine Creat(Medicine medicine, string pharmacyName);
         Medicine Delete(int Id);
-        Medicine Updte(Medicine medicine,string pharmacyName);
+        Medicine Update(Medicine medicine,string pharmacyName);
         Medicine Get(int Id);
         List<Medicine>Get(string type);
-        List<Medicine>Getall(string pharmacyName);
+        List<Medicine>GetAll(string pharmacyName);
         List<Medicine>Getall();
         
     }

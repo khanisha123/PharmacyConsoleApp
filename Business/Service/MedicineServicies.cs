@@ -50,7 +50,7 @@ namespace Business.Service
             throw new NotImplementedException();
         }
 
-        public List<Medicine> Getall(string pharmacyName)
+        public List<Medicine> GetAll(string pharmacyName)
         {
             Pharmacy dbpharmacy = pharmacyService.Get(pharmacyName);
             if (dbpharmacy != null)
@@ -74,7 +74,7 @@ namespace Business.Service
             throw new NotImplementedException();
         }
 
-        public Medicine Updte(Medicine medicine, string pharmacyName)
+        public Medicine Update(Medicine medicine, string pharmacyName)
         {
             throw new NotImplementedException();
         }

@@ -73,8 +73,11 @@ namespace Business.Service
         {
             return pharmacyrepository.GetAll(g => g.MaxPharmacyWareHouseSize == MaxPharmacyWareHouseSize);
         }
-      
-        
+        public List<Pharmacy> GetAllWithPharmacyType(string PharmacyType)
+        {
+            return pharmacyrepository.GetAll(g => g.Type == PharmacyType);
+        }
 
+        
     }
 }
