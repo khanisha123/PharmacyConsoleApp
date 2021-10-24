@@ -27,6 +27,7 @@ namespace ConsoleApp5
                             pharmacyController.Creat();
                                break;
                         case (int) Helper.Menu.UpdatePharmacy:
+                            pharmacyController.Update();
                             break;
                         case(int) Helper.Menu.DeletePharmacy:
                             pharmacyController.Delete();

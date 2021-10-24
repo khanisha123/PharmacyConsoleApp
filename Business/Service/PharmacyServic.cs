@@ -35,9 +35,26 @@ namespace Business.Service
             }
         }
 
-        public Pharmacy Update(int Id, Pharmacy pharmacy)
+        public Pharmacy Update(int Id,Pharmacy pharmacy)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Pharmacy dbPharmacy = pharmacyrepository.Get(s => s.Id == pharmacy.Id);
+                if (dbPharmacy!=null)
+                {
+                    pharmacyrepository.Update(dbPharmacy,pharmacy);
+                    return dbPharmacy;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
         }
 
         public Pharmacy Delete(int Id)
@@ -77,6 +94,7 @@ namespace Business.Service
         {
             return pharmacyrepository.GetAll(g => g.Type == PharmacyType);
         }
+        
 
         
     }

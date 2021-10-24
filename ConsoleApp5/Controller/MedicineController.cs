@@ -23,7 +23,6 @@ namespace PharmacyApp.Controller
             string type = Console.ReadLine();
             Medicine medicine = new Medicine{Type = type};
             Medicine newMed = medicineServicies.Creat(medicine, pharmacyName);
-
             if (newMed !=null)
             {
                 Helper.ChangeTextColor(ConsoleColor.Green,$"New Medicine Created {newMed.Type} ");

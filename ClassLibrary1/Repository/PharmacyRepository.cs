@@ -75,12 +75,13 @@ namespace DataAccess.Repository
             }
         }
 
-        public bool Update(Pharmacy entity)
+        public bool Update(Pharmacy entity,Pharmacy phaNew)
         {
             try
             {
                 Pharmacy dbPharmacie = Get(m=>m.Id == entity.Id);
-                dbPharmacie = entity;
+                dbPharmacie.Name = phaNew.Name;
+                
                 return true;
 
             }
@@ -89,6 +90,11 @@ namespace DataAccess.Repository
 
                 throw;
             }
+        }
+
+        public bool Update(Pharmacy entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

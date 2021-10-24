@@ -54,6 +54,50 @@ namespace PharmacyApp.Controller
 
 
         }
+        public void Update()
+        {
+            GetAll();
+            Helper.ChangeTextColor(ConsoleColor.DarkYellow, "Enter pharmacy Id Which Do you want to Update ");
+            string input = Console.ReadLine();
+            Helper.ChangeTextColor(ConsoleColor.DarkYellow, "Add A New Pharmacy Name ");
+            string input1 = Console.ReadLine();
+            int Id;
+            bool isTrueU = int.TryParse(input,out Id);
+            if (isTrueU)
+            {
+                Pharmacy pharmacy = new Pharmacy {Name=input1};
+                if (pharmacyServic.Update(Id,pharmacy)!=null)
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan, "Name is Changed");
+                    return;
+
+                }
+                else
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Red, "Please Enter Correct Format");
+                }
+
+            }
+            else
+            {
+                Helper.ChangeTextColor(ConsoleColor.Red, "Please select corect format");
+            }
+            //if (isTrue)
+            //{
+
+            //    if (pharmacyServic.Delete(pharmacyId) != null)
+            //    {
+            //        Helper.ChangeTextColor(ConsoleColor.Green, "pharmacy was deleted");
+            //        return;
+
+            //    }
+            //    else
+            //    {
+            //        Helper.ChangeTextColor(ConsoleColor.Green, $"{pharmacyId} is not find");
+            //        return;
+            //    }
+
+        }    //}
 
         public void GetAll() 
         {
