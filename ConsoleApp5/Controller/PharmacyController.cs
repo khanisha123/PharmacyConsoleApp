@@ -82,22 +82,8 @@ namespace PharmacyApp.Controller
             {
                 Helper.ChangeTextColor(ConsoleColor.Red, "Please select corect format");
             }
-            //if (isTrue)
-            //{
-
-            //    if (pharmacyServic.Delete(pharmacyId) != null)
-            //    {
-            //        Helper.ChangeTextColor(ConsoleColor.Green, "pharmacy was deleted");
-            //        return;
-
-            //    }
-            //    else
-            //    {
-            //        Helper.ChangeTextColor(ConsoleColor.Green, $"{pharmacyId} is not find");
-            //        return;
-            //    }
-
-        }    //}
+            
+        }    
 
         public void GetAll() 
         {

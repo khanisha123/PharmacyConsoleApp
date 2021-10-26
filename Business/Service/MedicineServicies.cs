@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using DataAccess.Repository;
+using Untilies.Exceptions;
 
 namespace Business.Service
 {
@@ -21,23 +22,51 @@ namespace Business.Service
         public Medicine Creat(Medicine medicine, string pharmacyName)
         {
             Pharmacy dbPharmacy = pharmacyService.Get(pharmacyName);
-            if (dbPharmacy !=null)
+            try
             {
-                medicine.Pharmacy = dbPharmacy;
-                medicine.Id = count;
-                medicineRepository.Creat(medicine);
-                count++;
-                return medicine;
+                
+                if (dbPharmacy != null)
+                {
+                    medicine.Pharmacy = dbPharmacy;
+                    medicine.Id = count;
+                    medicineRepository.Creat(medicine);
+                    count++;
+                    return medicine;
+                }
+                else
+                {
+                    throw new MedicineException("There isn't such thing as a type");
+                }
             }
-            else
+            catch (MedicineException ex)
             {
-                return null;
+
+                Console.WriteLine("There isn't such thing as a type", ex);
+                return default;
             }
         }
 
         public Medicine Delete(int Id)
         {
-            throw new NotImplementedException();
+            Medicine dbMedicine = medicineRepository.Get(m => m.Id == Id);
+            try
+            {
+                if (dbMedicine != null)
+                {
+                    medicineRepository.Delete(dbMedicine);
+                    return dbMedicine;
+                }
+                else
+                {
+                    throw new MedicineException("There isn't such thing as a type");
+                }
+            }
+            catch (MedicineException ex)
+            {
+
+                Console.WriteLine("There isn't such thing as a type", ex.Message);
+                return default; 
+            }
         }
 
         public Medicine Get(int Id)
@@ -53,13 +82,22 @@ namespace Business.Service
         public List<Medicine> GetAll(string pharmacyName)
         {
             Pharmacy dbpharmacy = pharmacyService.Get(pharmacyName);
-            if (dbpharmacy != null)
+            try
             {
-                return medicineRepository.GetAll(m => m.Pharmacy.Name== dbpharmacy.Name);
+                if (dbpharmacy != null)
+                {
+                    return medicineRepository.GetAll(m => m.Pharmacy.Name == dbpharmacy.Name);
+                }
+                else
+                {
+                    throw new MedicineException("There isn't such thing as a type");
+                }
             }
-            else
+            catch (MedicineException ex)
             {
-                return null;
+
+                Console.WriteLine("There isn't such thing as a type", ex);
+                return default;
             }
 
         }
@@ -76,7 +114,25 @@ namespace Business.Service
 
         public Medicine Update(Medicine medicine, string pharmacyName)
         {
-            throw new NotImplementedException();
+            Medicine dbMedicine = medicineRepository.Get(m => m.Id == medicine.Id);
+            try
+            {
+                if (dbMedicine!=null)
+                {
+                    medicineRepository.Update(medicine);
+                    return medicine;
+                }
+                else
+                {
+                    throw new MedicineException("There isn't such thing as a type");
+                }
+            }
+            catch (MedicineException ex)
+            {
+
+                Console.WriteLine("There isn't such thing as a type", ex);
+                return default; 
+            }
         }
     }
 }

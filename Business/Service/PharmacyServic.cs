@@ -4,6 +4,7 @@ using Entity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Untilies.Exceptions;
 
 namespace Business.Service
 {
@@ -19,6 +20,7 @@ namespace Business.Service
         {
             try
             {
+                
                 pharmacy.Id = count;
                 Pharmacy isExit = pharmacyrepository.Get(g => g.Name.ToLower() == pharmacy.Name.ToLower());
                 if (isExit != null)
@@ -28,10 +30,11 @@ namespace Business.Service
                 return pharmacy;
                 
             }
-            catch (Exception)
+            catch (PharmacyException ex)
             {
 
-                return null;
+                Console.WriteLine("There isn't such thing as a type", ex);
+                return default;
             }
         }
 
@@ -47,27 +50,37 @@ namespace Business.Service
                 }
                 else
                 {
-                    return null;
+                    throw new MedicineException("There isn't such thing as a type");
                 }
             }
-            catch (Exception)
+            catch (PharmacyException ex)
             {
 
-                return null;
+                Console.WriteLine("There isn't such thing as a type", ex.Message);
+                return default; ;
             }
         }
 
         public Pharmacy Delete(int Id)
         {
             Pharmacy dbPharmacy = pharmacyrepository.Get(g=>g.Id==Id);
-            if (dbPharmacy!=null)
+            try
             {
-                pharmacyrepository.Delete(dbPharmacy);
-                return dbPharmacy;
+                if (dbPharmacy != null)
+                {
+                    pharmacyrepository.Delete(dbPharmacy);
+                    return dbPharmacy;
+                }
+                else
+                {
+                    throw new MedicineException("There isn't such thing as a type");
+                }
             }
-            else
+            catch (PharmacyException ex)
             {
-                return null;
+
+                Console.WriteLine("There isn't such thing as a type", ex.Message);
+                return default; ;
             }
         }
 

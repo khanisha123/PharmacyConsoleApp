@@ -28,7 +28,7 @@ namespace PharmacyApp.Controller
                 Helper.ChangeTextColor(ConsoleColor.Green,$"New Medicine Created {newMed.Type} ");
                 return;
             }
-            Helper.ChangeTextColor(ConsoleColor.Red, $"Couldn't find such as Pharmacy {pharmacyName} ");
+
 
         }
         public void GetAllMedicineWithPharmacy() 
